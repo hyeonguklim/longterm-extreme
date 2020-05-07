@@ -3,12 +3,32 @@ clear;close all;clc
 % load input and pack
 input = load('data');
 
+input_desc = {'M: mass';
+'C: damping';
+'K: stiffness';
+'zeta: damping ratio to critical';
+'Hs: significant wave height';
+'Tp: spectral peak period';
+'N: number of harnomics';
+'dw: width of a frequency bin';
+'TF: transfer function (N/m)';
+'wmin: minimum frequency (rad/sec)';
+'wmax: maximum frequency (rad/sec)';
+'w: frequency range';
+'w_LF: frequency range for low frequency response';
+'N_LF: number of harmonics for low frequency response';
+'Diag_surge: diagonal terms in QTF';
+'H: frequency response function';
+'RAO: response amplitude opertator';
+'short_term_var: short-term random variables'};
+
+
 % frequency response function and response amplitude operator
-input.H = 1./( -(input.w).^2*input.M + i*input.w*input.C + input.K ); % FRF (m/N)
-input.RAO = input.H.*input.TF; % RAO (m/m)
+input.H = 1./( -(input.w).^2*input.M + i*input.w*input.C + input.K ); % FRF
+input.RAO = input.H.*input.TF; % RAO
 
 % Number of MCS samples
-N_T = 1000;
+N_T = 100;
 
 % set random seed
 randn('state',1);
@@ -27,11 +47,10 @@ for i = 1:N_T
     % pack inputs
     input.Hs = h;
     input.Tp = t;
-    input.short_term_var = normrnd(0,1,1,input.N*2); % short-term random variables: (1) random amplitudes and (2) phases
-
+    input.short_term_var = normrnd(0,1,1,input.N*2);
     
     % get maximum
-    Z(i) = surge_max(input);
+    Z(i) = get_max(input);
     
 end
 
@@ -118,21 +137,25 @@ Sn = alpha*9.81^2*Sn;
 
 end
 
-function Z = surge_max(input)
+function Z = get_max(input)
 
 % unpack input
 M = input.M; % mass
 C = input.C; % damping
 K = input.K; % stiffness
+zeta = input.zeta; % damping ratio to critical
 Hs = input.Hs; % significant wave height
 Tp = input.Tp; % spectral peak period
 N = input.N; % number of harnomics
 dw = input.dw; % width of a frequency bin
+TF = input.TF; % transfer function (N/m)
 wmin = input.wmin; % minimum frequency (rad/sec)
+wmax = input.wmax; % maximum frequency (rad/sec)
 w = input.w; % frequency range
 w_LF = input.w_LF; % frequency range for low frequency response
 N_LF = input.N_LF; % number of harmonics for low frequency response
 Diag_surge = input.Diag_surge; % diagonal terms in QTF
+H = input.H; % frequency response function
 RAO = input.RAO; % RAO
 short_term_var = input.short_term_var; % short-term random variables
 
