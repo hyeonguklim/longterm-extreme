@@ -50,7 +50,7 @@ The subfuctions needed for MCS and IS are attached at the bottom lines in the ma
 5. You can create exceedance probability plots using the saved .mat files by `plot_exprob.m`
 
 ## Figures
-<img src="https://github.com/hyeonguklim/longterm_extreme/blob/master/figures/exprob.png" width="100" height="100">
+<img src="https://github.com/hyeonguklim/longterm_extreme/blob/master/figures/exprob.png" width="350" height="">
 ![](https://github.com/hyeonguklim/longterm_extreme/blob/master/figures/exprob.png)  
 **Fig**: Exceedance probability estimation by MCS and importance sampling
 
