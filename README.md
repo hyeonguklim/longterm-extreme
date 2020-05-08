@@ -51,7 +51,7 @@ The subfuctions needed for MCS and IS are attached at the bottom lines in the ma
 
 ## Figures
 <img src="https://github.com/hyeonguklim/longterm_extreme/blob/master/figures/exprob.png" width="350" height="">
-![](https://github.com/hyeonguklim/longterm_extreme/blob/master/figures/exprob.png)  
+
 **Fig**: Exceedance probability estimation by MCS and importance sampling
 
 Variance in exceedance probability estimation is reduced with the help of importance sampling.
