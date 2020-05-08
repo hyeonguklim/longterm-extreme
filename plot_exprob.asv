@@ -5,8 +5,12 @@ IS = load('mat_files\IS_100000.mat');
 
 figure();hold on;
 for ii = 1:10
-    plot(MCS.z((ii-1)*10000+2),MCS.exprob(ii*10000+1),'r-','linewidth',1);
-    plot(IS.z((ii-1)*10000+1),IS.exprob(ii*10000),'b--','linewidth',1);
+    dataMC = MCS.z( (ii-1)*10000+1+1:ii*10000+1 );
+     = IS.z( (ii-1)*10000+1:ii*10000 );
+    [cdf1,z1] = ecdf(z1);
+    [cdf2,z2] = ecdf(z2);
+    plot(MCS,MCS,'r-','linewidth',1);
+    plot(IS,IS,'b--','linewidth',1);
 end
 set(gca,'yscale','log',...
     'box','on',...
