@@ -12,21 +12,26 @@ This study focuses on the development of efficient surrogate models by polynomia
 ## Related Publications/Presentations
 - HyeongUk Lim, Lance Manuel and Ying Min Low (2018), On Efficient Long-term Extreme Response Estimation for a Moored Floating Structure, Madrid, Spain, June 17-22, Proceedings of the ASME 2018 37th International Conference on Ocean, Offshore and Arctic Engineering, OMAE2018-78763. [[presentation]](https://github.com/hyeonguklim/longterm_extreme/blob/master/presentation/OMAE_2018-78763.pdf) [[paper]](https://doi.org/10.1115/OMAE2018-78763)
 
-## Codes
-### examples
-This folder contains examples of using aPCE:
-- [Ishigami function](https://www.sfu.ca/~ssurjano/ishigami.html): `aPCE_Ishigami.m`
+## MATLAB Codes
+Short explanation of MATLAB codes. You can also find line-by-line explanations inside the codes.
+
+### main functions
+
+- `MCS_30min.m`: Monte Carlo simulation of 30-min extreme surge response
+- `IS_30min.m`: MCS with the help of importance sampling
 
 ### subfunctions
-This folder contains the subfunctions needed for running aPCE:
+The subfuctions needed for MCS as well as IS are attached at the bottom of the main functions:
 
-- `aPCE.m`: builds an aPCE model 
-- `aPCE_coef.m`: calculates the coefficients of a polynomial function by the Gram-Schmidt orthogonalization
-- `ishigami.m`: Ishigami function evaluation
-- `multi_index.m`: gives multi-indices needed for multi-variate polynomial functions
+- `incdfHs`: inverse cumulative distribution function (cdf) of Hs
+- `pdfHs`: probability density function (pdf) of Hs
+- `pdfHsIS`: importance sampling density function of Hs
+- `incdfTp`: inverse cdf of Tp
+- `Jonswap`: [JONSWAP](https://wikiwaves.org/Ocean-Wave_Spectra) wave spectrum
+- `surge_max`: extreme surge response calculation by [IFFT](https://www.mathworks.com/help/matlab/ref/ifft.html)
 
-### other functions
-- `load_path.m`: sets the path where subfunctions are located
+### post-processing
+- `plot_exprob.m`: exceedance probability plots for MCS and IS results
 
 ## How to Run an Example
 1. Clone this repository to your directory
@@ -43,6 +48,3 @@ Ten sets of order-8 aPCE surrogate models estimate exceedance probabilities well
 ## Contact
 For any questions or comments, please email me at: hyeonguklim@gmail.com.
 
-$-b \pm \sqrt{b^2 - 4ac} \over 2a$
-$x = a_0 + \frac{1}{a_1 + \frac{1}{a_2 + \frac{1}{a_3 + a_4}}}$
-$\forall x \in X, \quad \exists y \leq \epsilon$
