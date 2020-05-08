@@ -1,7 +1,7 @@
 # MCS (importance sampling as well) and PCE for long-term extreme response prediction
 ## Summary
-![](https://github.com/hyeonguklim/aPCE/blob/master/figures/scheme.png)  
-**Fig**: A schematic of using arbitrary polynomial chaos expansion (aPCE)
+![](https://github.com/hyeonguklim/longterm_extreme/blob/master/scheme/scheme.png)  
+**Fig**: A simple SDOF structural system subject to wave loading and a quantity of interest (QoI)
 
 ## Authors/Collaborators
 [HyeongUk Lim](https://hyeonguk.wordpress.com), [Lance Manuel](https://lancemanuel.netlify.com), and [Ying Min Low](https://www.eng.nus.edu.sg/cee/staff/low-ying-min/)
