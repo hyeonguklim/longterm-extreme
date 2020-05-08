@@ -3,32 +3,12 @@ clear;close all;clc
 % load input and pack
 input = load('data');
 
-input_desc = {'M: mass';
-'C: damping';
-'K: stiffness';
-'zeta: damping ratio to critical';
-'Hs: significant wave height';
-'Tp: spectral peak period';
-'N: number of harnomics';
-'dw: width of a frequency bin';
-'TF: transfer function (N/m)';
-'wmin: minimum frequency (rad/sec)';
-'wmax: maximum frequency (rad/sec)';
-'w: frequency range';
-'w_LF: frequency range for low frequency response';
-'N_LF: number of harmonics for low frequency response';
-'Diag_surge: diagonal terms in QTF';
-'H: frequency response function';
-'RAO: response amplitude opertator';
-'short_term_var: short-term random variables'};
-
-
 % frequency response function and response amplitude operator
-input.H = 1./( -(input.w).^2*input.M + i*input.w*input.C + input.K ); % FRF
-input.RAO = input.H.*input.TF; % RAO
+input.H = 1./( -(input.w).^2*input.M + i*input.w*input.C + input.K ); % FRF (m/N)
+input.RAO = input.H.*input.TF; % RAO (m/m)
 
 % Number of MCS samples
-N_T = 100;
+N_T = 100000;
 
 % set random seed
 randn('state',1);
@@ -44,25 +24,34 @@ for i = 1:N_T
     h = incdfHs(q1);
     t = incdfTp(q2,q1);
     
+    % weight
+    weight(i) = pdfHs(h)/pdfHsIS(h);
+    
     % pack inputs
     input.Hs = h;
     input.Tp = t;
-    input.short_term_var = normrnd(0,1,1,input.N*2);
+    input.short_term_var = normrnd(0,1,1,input.N*2); % short-term random variables: (1) random amplitudes and (2) phases
     
     % get maximum
-    Z(i) = get_max(input);
+    Z(i) = surge_max(input);
     
 end
 
-% get empirical cdf
-[cdf,z] = ecdf(Z);
+% calculate exceedance probabilities
+z = unique(Z);
+len = length(z);
+for ii = 1:len
+    idx = Z > z(ii);
+    exprob(ii) = sum(weight(idx))/len;
+    clear idx
+end
 
 % exceedance probability plot
 figure();box on;
-h1 = plot(z,1-cdf,'r-','linewidth',2);
+h1 = plot(z,exprob,'b--','linewidth',2);
 xlabel('$z~(m)$','interpreter','latex')
 ylabel('$G_Z(z)$','interpreter','latex')
-leg1 = legend([h1],'MCS');legend boxoff
+leg1 = legend([h1],'IS');legend boxoff
 set(leg1,'interpreter','latex')
 xtickformat('%.1f')
 set(gca,'yscale','log',...
@@ -73,33 +62,26 @@ set(gca,'yscale','log',...
     'yminortick','on',...
     'xgrid','off',...
     'ygrid','off',...
-    'ytick',[1e-6 1e-5 1e-4 1e-3 1e-2 1e-1 1] , ...
+    'ytick',[1e-6 1e-5 1e-4 1e-3 1e-2 1e-1 1],...
+    'ylim',[1/N_T 1],...
     'fontsize',15)
+save IS.mat z exprob
 
 %% subfuctions
 % incdfHs and incdfTp depend on a site of interest
 % inverse cdf function of Hs
 function h = incdfHs(q1)
 
+% importance sampling density: lognormal
 % lognormal parameters
-lamda_h = 0.77;
+lamda_h = 1.0482;
 zeta_h = 0.6565;
-
-% Weibull parameters
-gamma = 1.503;
-rho = 2.691;
 
 % normal cdf
 u1 = normcdf(q1);
 
 % transform to physical space
-eta = 2.9; % LONOWE distribution
-threshold = logncdf(eta,lamda_h,zeta_h);
-if u1 <= threshold
-    h = logninv(u1,lamda_h,zeta_h);
-else
-    h = wblinv(u1,rho,gamma);
-end
+h = logninv(u1,lamda_h,zeta_h);
 
 end
 
@@ -137,25 +119,21 @@ Sn = alpha*9.81^2*Sn;
 
 end
 
-function Z = get_max(input)
+function Z = surge_max(input)
 
 % unpack input
 M = input.M; % mass
 C = input.C; % damping
 K = input.K; % stiffness
-zeta = input.zeta; % damping ratio to critical
 Hs = input.Hs; % significant wave height
 Tp = input.Tp; % spectral peak period
 N = input.N; % number of harnomics
 dw = input.dw; % width of a frequency bin
-TF = input.TF; % transfer function (N/m)
 wmin = input.wmin; % minimum frequency (rad/sec)
-wmax = input.wmax; % maximum frequency (rad/sec)
 w = input.w; % frequency range
 w_LF = input.w_LF; % frequency range for low frequency response
 N_LF = input.N_LF; % number of harmonics for low frequency response
 Diag_surge = input.Diag_surge; % diagonal terms in QTF
-H = input.H; % frequency response function
 RAO = input.RAO; % RAO
 short_term_var = input.short_term_var; % short-term random variables
 
@@ -191,5 +169,38 @@ X = -Nt*real(ifft(Z,Nt,2));
 
 % 30-min maximum
 Z = max(X(1:41888));
+
+end
+
+function pdf = pdfHs(h)
+
+% lognormal parameters
+zeta_h = 0.6565;
+lamda_h = 0.77;
+
+% Weibull parameters
+gamma = 1.503;
+rho = 2.691;
+
+% pdf
+eta = 2.9;
+for i = 1:length(h)
+    if h(i) <= eta
+        pdf(i) = 1./(sqrt(2*pi)*zeta_h*h(i)).*exp(-0.5*((log(h(i))-lamda_h)/zeta_h).^2);
+    else
+        pdf(i) = gamma/rho*(h(i)/rho).^(gamma-1).*exp(-(h(i)/rho).^gamma);
+    end
+end
+
+end
+
+function pdf = pdfHsIS(h)
+
+% lognormal parameters
+zeta_h = 0.6565;
+lamda_h = 1.0482;
+
+% lognormal pdf
+pdf = 1./(sqrt(2*pi)*zeta_h*h).*exp(-0.5*((log(h)-lamda_h)/zeta_h).^2);
 
 end
