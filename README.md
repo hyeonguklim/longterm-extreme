@@ -15,13 +15,22 @@ This study focuses on the development of efficient surrogate models by polynomia
 ## MATLAB Codes
 Short explanation of MATLAB codes. You can also find line-by-line explanations inside the codes.
 
+### data files
+
+- `data.mat`: structural/hydrodynamic parameters and initial setting for the analysis; please see `input_desc` in the file for more information. For example, type load data.mat; input_desc in MATLAB.
+
+```Matlab
+load data.mat input_desc
+disp(input_desc)
+```
+
 ### main functions
 
 - `MCS_30min.m`: Monte Carlo simulation of 30-min extreme surge response
 - `IS_30min.m`: MCS with the help of importance sampling
 
 ### subfunctions
-The subfuctions needed for MCS as well as IS are attached at the bottom of the main functions:
+The subfuctions needed for MCS and IS are attached at the bottom of the main functions:
 
 - `incdfHs`: inverse cumulative distribution function (cdf) of Hs
 - `pdfHs`: probability density function (pdf) of Hs
