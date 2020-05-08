@@ -42,17 +42,18 @@ The subfuctions needed for MCS and IS are attached at the bottom of the main fun
 ### post-processing
 - `plot_exprob.m`: exceedance probability plots for MCS and IS results
 
-## How to Run an Example
+## Example
 1. Clone this repository to your directory
-2. Run `aPCE_Ishigami.m` in MATLAB
-3. You can change parameters, e.g, a polynomial order (`p`)
-4. You will get an exceedance probability plot
+2. Open `MCS_30min.m` in MATLAB and run as it is or you can change variables (ex: number of samples, `N_T`)
+3. You can also run `IS_30min.m`
+4. The results from the runs are saved in `.\mat_file\`
+5. You can creat exceedance probability plots using the saved mat files by `plot_exprob.m`
 
-## Sample Figures
-![](https://github.com/hyeonguklim/aPCE/blob/master/figures/exceedance_plot.png)  
-**Fig**: Exceedance probability estimation by aPCE for the Ishigami function
+## Figures
+![](https://github.com/hyeonguklim/longterm_extreme/blob/master/figures/exprob.png)  
+**Fig**: Exceedance probability estimation by MCS and importance sampling
 
-Ten sets of order-8 aPCE surrogate models estimate exceedance probabilities well when compared with ten sets of Monte Carlo simulations in the Ishigami function.
+Variance in exceedance probability estimation is reduced by importance sampling.
 
 ## Contact
 For any questions or comments, please email me at: hyeonguklim@gmail.com.
