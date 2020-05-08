@@ -50,3 +50,4 @@ set(gca,'yscale','log',...
 xlabel('$z~(m)$','interpreter','latex')
 ylabel('$G_z(z)$','interpreter','latex')
 xtickformat('%.1f')
+print('figures\exprob','-dpng','-r0')
