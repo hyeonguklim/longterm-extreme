@@ -4,14 +4,13 @@
 **Fig**: A schematic of using arbitrary polynomial chaos expansion (aPCE)
 
 ## Authors/Collaborators
-[HyeongUk Lim](https://hyeonguk.wordpress.com) and [Lance Manuel](https://lancemanuel.netlify.com)
+[HyeongUk Lim](https://hyeonguk.wordpress.com), [Lance Manuel](https://lancemanuel.netlify.com), and [Ying Min Low](https://www.eng.nus.edu.sg/cee/staff/low-ying-min/)
 
 ## Description
 This study focuses on the development of efficient surrogate models by polynomial chaos expansion (PCE) for prediction of the long-term extreme surge motion of a moored floating offshore structure. The structure is subjected to first-order and second-order (difference-frequency) wave loading. Uncertainty in the long-term response arises from contrasting sea state conditions, characterized by significant wave height, Hs, and spectral peak period, Tp, and their relative likelihood of occurrence; these two variables are explicitly included in the PCE-based uncertainty quantification (UQ). In a given sea state, however, response simulations must be run for the associated Hs and Tp; in such simulations, typically, a set of random amplitudes and phases define an irregular wave train consistent with that sea state.  These random amplitudes and phases for all the frequency components in the wave train introduce additional uncertainty in the simulated waves and in the response.  The UQ framework treats these two sources of uncertainty---from Hs and Tp on the one hand, and the amplitude and phase vectors on the other---in a manner that efficiently yields long-term surge motion extreme predictions consistent with more expensive Monte Carlo simulations (MCS) that serve as the "truth" system. To reduce uncertainty in response extremes that result from sea states with a low likelihood of occurrence, importance sampling is employed with both MCS- and PCE-based extreme response predictions. Satisfactory performance with such efficient surrogate models can help in assessing the long-term response of various offshore structures.  
-[see slides](https://github.com/hyeonguklim/longterm_extreme/blob/master/presentation/OMAE_2018-78763.pdf)
 
 ## Related Publications/Presentations
-- Lim, H and Manuel, L, Distribution-Free Polynomial Chaos Expansion Surrogate Models for Efficient Structural Reliability Analysis, *Engineering Mechanics Institute Conference*, Pasadena, CA, June 18-21, 2019. [[presentation](https://hyeonguk.files.wordpress.com/2019/07/emi19_presentation.pdf)]
+- HyeongUk Lim, Lance Manuel and Ying Min Low (2018), On Efficient Long-term Extreme Response Estimation for a Moored Floating Structure, Madrid, Spain, June 17-22, Proceedings of the ASME 2018 37th International Conference on Ocean, Offshore and Arctic Engineering, OMAE2018-78763. [[presentation]](https://github.com/hyeonguklim/longterm_extreme/blob/master/presentation/OMAE_2018-78763.pdf) [[paper]](https://doi.org/10.1115/OMAE2018-78763)
 
 ## Codes
 ### examples
