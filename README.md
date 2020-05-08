@@ -17,7 +17,7 @@ Short explanation of MATLAB codes. You can also find line-by-line explanations i
 
 ### data files
 
-- `data.mat`: structural/hydrodynamic parameters and initial setting for the analysis; please see `input_desc` in the file for more information. For example, type the following lines in Matlab:
+- `data.mat`: structural/hydrodynamic parameters and initial setting for the analysis; please see `input_desc` in the .mat file for description. You can type the following lines to see in MATLAB:
 
 ```Matlab
 load data.mat input_desc
@@ -27,10 +27,10 @@ disp(input_desc)
 ### main functions
 
 - `MCS_30min.m`: Monte Carlo simulation of 30-min extreme surge response
-- `IS_30min.m`: MCS with the help of importance sampling
+- `IS_30min.m`: MCS by importance sampling
 
 ### subfunctions
-The subfuctions needed for MCS and IS are attached at the bottom of the main functions:
+The subfuctions needed for MCS and IS are attached at the bottom lines in the main functions:
 
 - `incdfHs`: inverse cumulative distribution function (cdf) of Hs
 - `pdfHs`: probability density function (pdf) of Hs
@@ -46,14 +46,15 @@ The subfuctions needed for MCS and IS are attached at the bottom of the main fun
 1. Clone this repository to your directory
 2. Open `MCS_30min.m` in MATLAB and run as it is or you can change variables (ex: number of samples, `N_T`)
 3. You can also run `IS_30min.m`
-4. The results from the runs are saved in `.\mat_file\`
-5. You can creat exceedance probability plots using the saved mat files by `plot_exprob.m`
+4. The results after the runs are saved in `.\mat_file\`
+5. You can create exceedance probability plots using the saved .mat files by `plot_exprob.m`
 
 ## Figures
+<img src="https://github.com/hyeonguklim/longterm_extreme/blob/master/figures/exprob.png" width="100" height="100">
 ![](https://github.com/hyeonguklim/longterm_extreme/blob/master/figures/exprob.png)  
 **Fig**: Exceedance probability estimation by MCS and importance sampling
 
-Variance in exceedance probability estimation is reduced by importance sampling.
+Variance in exceedance probability estimation is reduced with the help of importance sampling.
 
 ## Contact
 For any questions or comments, please email me at: hyeonguklim@gmail.com.
