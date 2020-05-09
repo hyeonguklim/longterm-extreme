@@ -1,4 +1,4 @@
-# MCS (importance sampling as well) and PCE for long-term extreme response prediction
+# Long-term extreme response prediction by MCS and PCE
 ## Summary
 ![](https://github.com/hyeonguklim/longterm_extreme/blob/master/scheme/scheme.png)  
 **Fig**: A simple SDOF structural system subject to wave loading and a quantity of interest (QoI)
