@@ -28,6 +28,7 @@ disp(input_desc)
 
 - `MCS_30min.m`: Monte Carlo simulation of 30-min extreme surge response
 - `IS_30min.m`: MCS by importance sampling
+- `pce.m`: surrogate model building using polynomial chaos expansion (PCE)
 
 ### subfunctions
 The subfuctions needed for MCS and IS are attached at the bottom lines in the main functions:
@@ -40,7 +41,8 @@ The subfuctions needed for MCS and IS are attached at the bottom lines in the ma
 - `surge_max`: extreme surge response calculation by [IFFT](https://www.mathworks.com/help/matlab/ref/ifft.html)
 
 ### post-processing
-- `plot_exprob.m`: exceedance probability plots for MCS and IS results
+- `plot_exprob_mcs.m`: exceedance probability plots for MCS and IS results
+- `plot_exprob_pce.m`: exceedance probability plots for MCS and PCE results
 
 ## Example
 1. Clone this repository to your directory
@@ -50,11 +52,15 @@ The subfuctions needed for MCS and IS are attached at the bottom lines in the ma
 5. You can create exceedance probability plots using the saved .mat files by `plot_exprob.m`
 
 ## Figures
-<img src="https://github.com/hyeonguklim/longterm_extreme/blob/master/figures/exprob.png" width="350" height="">
+<img src="https://github.com/hyeonguklim/longterm_extreme/blob/master/figures/exprob_mcs.png" width="350" height="">
 
 **Fig**: Exceedance probability estimation by MCS and importance sampling
 
 Variance in exceedance probability estimation is reduced with the help of importance sampling.
+
+<img src="https://github.com/hyeonguklim/longterm_extreme/blob/master/figures/exprob_pce.png" width="350" height="">
+
+**Fig**: Exceedance probability estimation by MCS and PCE
 
 ## Contact
 For any questions or comments, please email me at: hyeonguklim@gmail.com.

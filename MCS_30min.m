@@ -1,7 +1,7 @@
 clear;close all;clc
 
 % load input and pack
-input = load('data');
+input = load('mat_files\data');
 
 % frequency response function and response amplitude operator
 input.H = 1./( -(input.w).^2*input.M + i*input.w*input.C + input.K ); % FRF (m/N)
@@ -23,6 +23,10 @@ for i = 1:N_T
     % significant wave height, Hs, and spectral peak period, Tp
     h = incdfHs(q1);
     t = incdfTp(q2,q1);
+    
+    % save q1 and q2 (Hs and Tp in normal space)
+    Q1(i) = q1;
+    Q2(i) = q2;
     
     % pack inputs
     input.Hs = h;
@@ -57,7 +61,7 @@ set(gca,'yscale','log',...
     'ygrid','off',...
     'ytick',[1e-6 1e-5 1e-4 1e-3 1e-2 1e-1 1] , ...
     'fontsize',15)
-save(['mat_files\MCS_' num2str(N_T) '.mat'],'Z')
+save(['mat_files\MCS_' num2str(N_T) '.mat'],'Z','Q1','Q2')
 
 %% subfuctions
 % incdfHs and incdfTp depend on a site of interest

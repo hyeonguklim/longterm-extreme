@@ -1,7 +1,7 @@
 clear;close all;clc
 
 % load input and pack
-input = load('data');
+input = load('mat_files\data');
 
 % frequency response function and response amplitude operator
 input.H = 1./( -(input.w).^2*input.M + i*input.w*input.C + input.K ); % FRF (m/N)
