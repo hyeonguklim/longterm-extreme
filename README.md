@@ -47,9 +47,9 @@ The subfuctions needed for MCS and IS are attached at the bottom lines in the ma
 ## Example
 1. Clone this repository to your directory
 2. Open `MCS_30min.m` in MATLAB and run as it is or you can change variables (ex: number of samples, `N_T`)
-3. You can also run `IS_30min.m`
+3. You can also run the others: `IS_30min.m` and `pce.m`
 4. The results after the runs are saved in `.\mat_file\`
-5. You can create exceedance probability plots using the saved .mat files by `plot_exprob.m`
+5. You can create exceedance probability plots using the saved .mat files by `plot_exprob_mcs.m` and `plot_exprob_pce.m`
 
 ## Figures
 <img src="https://github.com/hyeonguklim/longterm_extreme/blob/master/figures/exprob_mcs.png" width="350" height="">
