@@ -13,7 +13,7 @@ This study focuses on the development of efficient surrogate models by polynomia
 - HyeongUk Lim, Lance Manuel and Ying Min Low (2018), On Efficient Long-term Extreme Response Estimation for a Moored Floating Structure, Madrid, Spain, June 17-22, Proceedings of the ASME 2018 37th International Conference on Ocean, Offshore and Arctic Engineering, OMAE2018-78763. [[presentation]](https://github.com/hyeonguklim/longterm_extreme/blob/master/presentation/OMAE_2018-78763.pdf) [[paper]](https://doi.org/10.1115/OMAE2018-78763)
 
 ## MATLAB Codes
-Short explanation of MATLAB codes. You can also find line-by-line explanations inside the codes.
+Short explanation of the developed MATLAB codes. You can also find line-by-line explanations inside the codes.
 
 ### data files
 
