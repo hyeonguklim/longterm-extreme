@@ -1,5 +1,5 @@
 # Long-term extreme response prediction by MCS and PCE
-## Summary
+## Schematic
 ![](https://github.com/hyeonguklim/longterm_extreme/blob/master/scheme/scheme.png)  
 **Fig**: A simple SDOF structural system subject to wave loading and a quantity of interest (QoI)
 
@@ -31,7 +31,7 @@ disp(input_desc)
 - `pce.m`: surrogate model building using polynomial chaos expansion (PCE)
 
 ### subfunctions
-The subfuctions needed for MCS and IS are attached at the bottom lines in the main functions:
+The subfuctions needed for running the main functions are:
 
 - `incdfHs`: inverse cumulative distribution function (cdf) of Hs
 - `pdfHs`: probability density function (pdf) of Hs
