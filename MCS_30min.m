@@ -1,4 +1,5 @@
 clear;close all;clc
+% original codes provided by Prof. Ying Min Low in 2017
 
 % load input and pack
 input = load('mat_files\data');
