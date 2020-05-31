@@ -17,7 +17,7 @@ Short explanation of the developed MATLAB codes. You can also find line-by-line 
 
 ### data files
 
-- `data.mat`: structural/hydrodynamic parameters and initial setting for the analysis; please see `input_desc` in the .mat file for description. You can type the following lines to see in MATLAB:
+- `data.mat`: structural/hydrodynamic parameters and initial setting for the analysis; please see `input_desc` in the .mat file for description. You may type the following lines to see the description:
 
 ```Matlab
 load data.mat input_desc
