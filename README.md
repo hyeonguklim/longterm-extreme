@@ -16,7 +16,7 @@ This study focuses on the development of efficient surrogate models by polynomia
 The developed MATLAB codes are explained in brief; you can also find line-by-line explanations inside the codes.
 
 ### prerequisite
-You may need the toolboxes listed as below:
+You may need the following MATLAB toolboxes:
 - Statistics and Machine Learning Toolbox
 - Symbolic Math Toolbox
 
