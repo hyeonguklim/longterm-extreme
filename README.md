@@ -20,8 +20,9 @@ You may need the following MATLAB toolboxes:
 - Statistics and Machine Learning Toolbox
 - Symbolic Math Toolbox
 
+You may type the following command to see the toolboxes required for the analysis:
 ```Matlab
-[fList,pList] = matlab.codetools.requiredFilesAndProducts('MCS_30min.m')
+[fList,pList] = matlab.codetools.requiredFilesAndProducts('PCE.m')
 disp({pList.Name}')
 ```
 
