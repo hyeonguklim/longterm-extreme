@@ -80,7 +80,7 @@ for n = 2:p+1
     He_p{n+1} = [He_p{n} 0] - (n-1)*[0 0 He_p{n-1}]; % recursive formula
 end
 
-% define the number of random variables
+% univariate Hermite basis function
 x = cell(1,M);
 H_s = cell(p,M);
 H_p = cell(p,M);
@@ -108,6 +108,8 @@ end
 
 % squared-norm
 PsiSqNorm = prod(factorial(alpha),2);
+
+% rearrange
 for k = 1:P
     Psi_sim(k) = (Psi_s{k});
 end
