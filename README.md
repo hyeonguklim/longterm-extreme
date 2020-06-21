@@ -58,8 +58,9 @@ The subfuctions needed for running the main functions are:
 - `pdfHs`: probability density function (pdf) of Hs
 - `pdfHsIS`: importance sampling density function of Hs
 - `incdfTp`: inverse cdf of Tp
-- `Jonswap`: [JONSWAP](https://wikiwaves.org/Ocean-Wave_Spectra) wave spectrum
 - `surge_max`: extreme surge response calculation by [IFFT](https://www.mathworks.com/help/matlab/ref/ifft.html)
+- `Hermite_PC`: Hermite orthogonal polynomial family
+- `multi_index`: multi-index for multivariate orthogonal functions
 
 ### post-processing
 - `plot_exprob_mcs.m`: exceedance probability plots for MCS and IS results
@@ -68,8 +69,8 @@ The subfuctions needed for running the main functions are:
 ## Example
 1. Clone this repository to your directory
 2. Open `MCS_30min.m` in MATLAB and run as it is or you can change variables (ex: number of samples, `N_T`)
-3. You can also run the others: `IS_30min.m` and `pce.m`
-4. The results after the runs are saved in `.\mat_file\`
+3. You can also run the others: `IS_30min.m` and `PCE.m`
+4. The results will be saved in `.\mat_file\`
 5. You can create exceedance probability plots using the saved .mat files by `plot_exprob_mcs.m` and `plot_exprob_pce.m`
 
 ## Figures
