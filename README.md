@@ -39,7 +39,7 @@ disp(input_desc)
 
 - `MCS_30min.m`: Monte Carlo simulation of 30-min extreme surge response
 - `IS_30min.m`: MCS by importance sampling
-- `pce.m`: surrogate model building using polynomial chaos expansion (PCE)
+- `PCE.m`: surrogate model building using polynomial chaos expansion (PCE)
 
 ### subfunctions
 The subfuctions needed for running the main functions are:
