@@ -28,12 +28,22 @@ disp({pList.Name}')
 
 ### data files
 
-- `data.mat`: structural/hydrodynamic parameters and initial setting for the analysis; please see `input_desc` in the .mat file for description. You may type the following lines to see the description:
-
-```Matlab
-load data.mat input_desc
-disp(input_desc)
-```
+- You may need the following structural/hydrodynamic parameters for the analysis:
+'''Matlab
+'M: mass (kg)'
+'C: damping (N/m/s)'
+'K: stiffness (N/m)'
+'zeta: damping ratio to critical'
+'N: number of harnomics'
+'dw: width of a frequency bin'
+'TF: transfer function (N/m)'
+'wmin: minimum frequency (rad/sec)'
+'wmax: maximum frequency (rad/sec)'
+'w: frequency range'
+'w_LF: frequency range for low frequency response'
+'N_LF: number of harmonics for low frequency response'
+'Diag_surge: diagonal terms in QTF'
+'''
 
 ### main functions
 
