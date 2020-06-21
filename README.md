@@ -29,7 +29,7 @@ disp({pList.Name}')
 ### data files
 
 - You may need the following structural/hydrodynamic parameters for the analysis:
-'''Matlab
+```Matlab
 'M: mass (kg)'
 'C: damping (N/m/s)'
 'K: stiffness (N/m)'
@@ -43,7 +43,7 @@ disp({pList.Name}')
 'w_LF: frequency range for low frequency response'
 'N_LF: number of harmonics for low frequency response'
 'Diag_surge: diagonal terms in QTF'
-'''
+```
 
 ### main functions
 
