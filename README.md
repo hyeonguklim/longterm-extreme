@@ -68,6 +68,7 @@ The subfuctions needed for running the main functions are:
 	```Matlab
 	surge_max_mex(h,t,1) % h and t are wave height and peak period in physical variable space
 	```
+	
 - `Hermite_PC`: Hermite orthogonal polynomial family
 - `multi_index`: multi-index for multivariate orthogonal functions
 
