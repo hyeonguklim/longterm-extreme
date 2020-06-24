@@ -58,7 +58,7 @@ The subfuctions needed for running the main functions are:
 - `pdfHs`: probability density function (pdf) of Hs
 - `pdfHsIS`: importance sampling density function of Hs
 - `incdfTp`: inverse cdf of Tp
-- `surge_max`: extreme surge response calculation by [IFFT](https://www.mathworks.com/help/matlab/ref/ifft.html)
+- `surge_max_mex`: extreme surge response calculation by [IFFT](https://www.mathworks.com/help/matlab/ref/ifft.html)
 - `Hermite_PC`: Hermite orthogonal polynomial family
 - `multi_index`: multi-index for multivariate orthogonal functions
 
