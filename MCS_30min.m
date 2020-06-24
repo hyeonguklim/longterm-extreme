@@ -3,7 +3,7 @@ clear;close all;clc
 % modified by HyeongUk Lim in 2020
 
 % Number of MCS samples
-N_T = 5e3;
+N_T = 1e5;
 
 % set random seed
 randn('state',1);
@@ -42,4 +42,4 @@ set(gca,'yscale','log',...
     'ygrid','off',...
     'ytick',[1e-6 1e-5 1e-4 1e-3 1e-2 1e-1 1] , ...
     'fontsize',15)
-% save(['mat_files\MCS_' num2str(N_T) '.mat'],'Z','Q1','Q2')
+save(['mat_files\MCS_' num2str(N_T) '.mat'],'Z','Q1','Q2')

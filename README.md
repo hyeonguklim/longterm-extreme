@@ -47,8 +47,8 @@ disp({pList.Name}')
 
 ### main functions
 
-- `MCS_30min.m`: Monte Carlo simulation of 30-min extreme surge response
-- `IS_30min.m`: MCS by importance sampling
+- `MCS_30min.m`: Monte Carlo simulation (MCS) of 30-min extreme surge response
+- `IS_30min.m`: MCS by importance sampling (IS)
 - `PCE.m`: surrogate model building using polynomial chaos expansion (PCE)
 
 ### subfunctions
@@ -59,6 +59,14 @@ The subfuctions needed for running the main functions are:
 - `pdfHsIS`: importance sampling density function of Hs
 - `incdfTp`: inverse cdf of Tp
 - `surge_max_mex`: extreme surge response calculation by [IFFT](https://www.mathworks.com/help/matlab/ref/ifft.html)
+Usage for MCS:
+```Matlab
+surge_max_mex(q1,q2,0) % q1 and q2 are wave height and peak period in standard normal variable space
+```
+Usage for IS:
+```Matlab
+surge_max_mex(h,t,1) % h and t are wave height and peak period in physical variable space
+```
 - `Hermite_PC`: Hermite orthogonal polynomial family
 - `multi_index`: multi-index for multivariate orthogonal functions
 
