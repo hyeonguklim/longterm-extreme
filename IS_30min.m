@@ -3,7 +3,7 @@ clear;close all;clc
 % modified for IS by HyeongUk Lim in 2020
 
 % Number of MCS samples
-N_T = 100000;
+N_T = 1000;
 
 % set random seed
 randn('state',1);
@@ -15,21 +15,15 @@ for i = 1:N_T
     q1 = normrnd(0,1);
     q2 = normrnd(0,1);
     
-    % pack inputs
-    input.q1 = q1;
-    input.q2 = q2;
-    
     % Hs and Tp
     h = incdfHs(q1);
     t = incdfTp(q2,q1);
-    input.Hs = h;
-    input.Tp = t;
     
     % weight
     weight(i) = pdfHs(h)/pdfHsIS(h);
     
     % get maximum
-    Z(i) = surge_max(input);
+    Z(i) = surge_max_mex(h,t,1);
     
 end
 
@@ -61,7 +55,7 @@ set(gca,'yscale','log',...
     'ytick',[1e-6 1e-5 1e-4 1e-3 1e-2 1e-1 1],...
     'ylim',[1/N_T 1],...
     'fontsize',15)
-save(['mat_files\IS_' num2str(N_T) '.mat'],'Z','weight')
+% save(['mat_files\IS_' num2str(N_T) '.mat'],'Z','weight')
 
 function pdf = pdfHs(h)
 
