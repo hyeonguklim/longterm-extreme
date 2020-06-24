@@ -59,11 +59,12 @@ The subfuctions needed for running the main functions are:
 - `pdfHsIS`: importance sampling density function of Hs
 - `incdfTp`: inverse cdf of Tp
 - `surge_max_mex`: extreme surge response calculation by [IFFT](https://www.mathworks.com/help/matlab/ref/ifft.html)
-Usage for MCS:
+
+#### usage for MCS:
 ```Matlab
 surge_max_mex(q1,q2,0) % q1 and q2 are wave height and peak period in standard normal variable space
 ```
-Usage for IS:
+#### usage for IS:
 ```Matlab
 surge_max_mex(h,t,1) % h and t are wave height and peak period in physical variable space
 ```
