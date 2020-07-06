@@ -34,7 +34,7 @@ disp({pList.Name}')
 'C: damping (N/m/s)'
 'K: stiffness (N/m)'
 'zeta: damping ratio to critical'
-'N: number of harnomics'
+'N: number of harmonics'
 'dw: width of a frequency bin'
 'TF: transfer function (N/m)'
 'wmin: minimum frequency (rad/sec)'
