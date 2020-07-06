@@ -12,11 +12,11 @@ randn('state',1);
 for i = 1:N_T
     
     % normal random numbers (Hs and Tp in normal space)
-    q1 = normrnd(0,1);
-    q2 = normrnd(0,1);   
+    Q1 = normrnd(0,1);
+    Q2 = normrnd(0,1);   
     
     % get maximum
-    Z(i) = surge_max_mex(q1,q2,0);
+    Z(i) = surge_max_mex(Q1,Q2,0);
     
 end
 
